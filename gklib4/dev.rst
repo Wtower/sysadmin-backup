@@ -20,3 +20,10 @@ Arguments
 ---------
 
 - http://www.cplusplus.com/articles/DEN36Up4/
+
+CMake
+-----
+
+- http://stackoverflow.com/questions/834748/gcc-makefile-error-no-rule-to-make-target/834770#834770
+- http://stackoverflow.com/questions/13703647/how-to-properly-add-include-directories-with-cmake
+- http://stackoverflow.com/questions/25836027/where-does-clion-store-executable-files
