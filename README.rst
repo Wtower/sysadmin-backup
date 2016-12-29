@@ -1,47 +1,55 @@
 sysadmin-backup
 ===============
 
-Console backup app version 2
+Console backup app
 
-GKlib4
-------
+Features
+--------
 
-Initially the ``gklib4`` directory was placed out of the root of the project.
+- Backup methods: tar, rsync
+- Backup modes: normal, incremental
+- Email notification
+- Mysqldump/postgres dump
+- Log file
+- Exclude file list
+- Destination types: local, ssh, usb
+- Automatic usb media mount and decryption
+- Size quota (soon)
+- Configuration files
 
-Notes on Eclipse IDE
---------------------
+How to use
+----------
+::
 
-Install with::
+    $ ./sysadmin-backup
+    SYSadmin Backup
+    (c) 2011-2017 George Karakostas <gkarak@9-dev.com>
+    Version 1.20
+    Missing parameter [destination]                                          [fail]
+    Missing parameter [directories]                                          [fail]
+    Usage: ./sysadmin-backup (options) (configuration file)
 
-    sudo apt-get install eclipse-cdt g++
+    Options:
+            --destination: Where to place backup files.
+            --destination-backup-dir: Where to keep incremental backups (rsync only).
+            --destination-database: Specify where to output database dumps (if enabled).
+            --destination-device: If usb, it is the device to be mounted (eg /dev/sdd1).
+            --destination-encrypted-key: If encrypted usb, set to pathfilename of keyfile.
+            --destination-encrypted-map: If encrypted usb, set to mappoint.
+            --destination-quota: Up to which size to allow old backups (in GB).
+            --forward: Specify type of backup destination (local, ssh, usb).
+            --directories: Which directories to include.
+            -n, --dry-run: Simulate backup.
+            --excludes: Which files or directories to exclude.
+            -h, --help: This help screen.
+            --ignore-existing: Ignores existing files on destination (rsync only).
+            -i, --incremental: If on then increment period is *month* (every month one full backup).
+            --logfile: Where to keep a log file.
+            -d, --mysqldump: Run a mysqldump before the backup.
+            --name: Backup job name.
+            -p, --postgresdump: Run a postgresdump before the backup.
+            --recipient: Where to send mail to notify. If empty no email will be sent.
+            --type: Specify the backup method (tar, rsync).
+            -v, --verbose: Print additional information.
 
-http://stackoverflow.com/questions/14721514/how-to-install-eclipse-with-c-in-ubuntu-12-10
-
-New project
-^^^^^^^^^^^
-
-Use Linux gcc (not cross) toolchain (compiler, linker etc).
-
-If issue with includes:
-
-- http://askubuntu.com/questions/150139/how-to-make-eclipse-cdts-linux-gcc-toolchain-resolve-c-standard-library-heade
-
-Execute shell command
----------------------
-
-``popen``
-
-- http://stackoverflow.com/questions/478898/how-to-execute-a-command-and-get-output-of-command-within-c
-- http://www.sw-at.com/blog/2011/03/23/popen-execute-shell-command-from-cc/
-
-String class
-------------
-
-Use ``c_str()`` to output to ``printf``
-
-- http://stackoverflow.com/questions/10865957/c-printf-with-stdstring
-
-Arguments
----------
-
-- http://www.cplusplus.com/articles/DEN36Up4/
+See also the provided configuration examples under ``/etc``.
