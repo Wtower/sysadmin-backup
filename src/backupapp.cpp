@@ -15,7 +15,7 @@
 void BackupApp::GetAppInfo() {
 	output()->p("SYSadmin Backup");
 	output()->p("(c) 2011-2017 George Karakostas <gkarak@9-dev.com>");
-	output()->p("Version 1.21");
+	output()->p("Version 1.20.1");
 }
 
 void BackupApp::DefineParameters() {
