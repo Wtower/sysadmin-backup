@@ -15,7 +15,7 @@
 void BackupApp::GetAppInfo() {
 	output()->p("SYSadmin Backup");
 	output()->p("(c) 2011-2017 George Karakostas <gkarak@9-dev.com>");
-	output()->p("Version 1.20");
+	output()->p("Version 1.21");
 }
 
 void BackupApp::DefineParameters() {
@@ -621,7 +621,7 @@ int BackupApp::Main() {
 		output()->set_recipient("");
 		return 0;
 	}
-	/*/ Now mount the filesystem (if usb)
+	// Now mount the filesystem (if usb)
 	r = Mount();
 	if (r) {
 		output()->set_recipient("");
@@ -631,7 +631,7 @@ int BackupApp::Main() {
 	MySqlDump();
 	PostGresDump();
 	if (type_ == "tar")	r = BackupTar();
-	else r = BackupRsync();*/
+	else r = BackupRsync();
 	TimeStat(t_start);
 	if (r) {
 		output()->p("Backup not completed successfully", "fail");
@@ -641,7 +641,7 @@ int BackupApp::Main() {
 		output()->p("Backup completed successfully", "ok");
 		output()->set_subject("Backup report for " + name_ +": OK");
 	}
-	//UnMount();
+	UnMount();
 	Unlock();
 	return r;
 }
